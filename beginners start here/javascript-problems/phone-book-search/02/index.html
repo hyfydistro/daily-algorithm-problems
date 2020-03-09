@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      p {
+        color: purple;
+        margins 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="preview">
+      <!-- <input type="text" name="input" value="">
+      <button></button> -->
+    </section>
+
+    <script type="text/javascript">
+      let name = 'Mustafa';
+      let i = 0;
+      let para = document.createElement('p');
+
+      let phonebook = [
+      { name : 'Chris', number : '1549' },
+      { name : 'Li Kang', number : '9634' },
+      { name : 'Anne', number : '9065' },
+      { name : 'Francesca', number : '3001' },
+      { name : 'Mustafa', number : '6888' },
+      { name : 'Tina', number : '4312' },
+      { name : 'Bert', number : '7780' },
+      { name : 'Jada', number : '2282' },
+      ];
+
+      // Recommended solution
+
+      do {
+        if (phonebook[i].name === name) { // 'phonebook[i].name' works too
+          para.textContent = `${phonebook[i].name}'s number is ${phonebook[i].number}.`;
+          break;
+        }
+
+        if (i === phonebook.length - 1) {
+          para.textContent = 'Name not found.';
+        }
+
+        i++;
+      } while (i < phonebook.length);
+
+      let section = document.querySelector('section');
+      section.appendChild(para);
+    </script>
+  </body>
+</html>

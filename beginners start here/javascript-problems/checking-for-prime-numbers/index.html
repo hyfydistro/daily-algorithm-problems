@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Checking for prime numbers</title>
+    <style media="screen">
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="preview"></section>
+
+<script type="text/javascript">
+  let i = 500;
+  let para = document.createElement('p');
+
+  function isPrime(num) {
+    for (let i = 2; i < num; i++) {
+      if (num % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  while (0 < i) {
+    // ALGORITHM:
+    // 1. Check IF the following number is prime - i.e. return 'true' if prime; return 'false' if not.
+    // 2. if-statement is 'true', store the following number in 'para' to display results.
+    if (isPrime(i)) {
+      para.textContent += i + ', ';
+    }
+
+    i--;
+  }
+
+  // Alternative Solution
+  // while (i >= 0) {
+  //   i--;
+  //   if (!isPrime(i)) {
+  //     continue;
+  //   }
+  //
+  //   para.textContent += `${i} `;
+  // }
+
+  let section = document.querySelector('section');
+  section.appendChild(para);
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Print List</title>
+  <style media="screen">
+    p {
+        color: purple;
+        margins 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+</head>
+
+<body>
+  <section class="preview"></section>
+
+  <script type="text/javascript">
+    let myArray = ['tomatoes', 'chick peas', '<span style="display:none;">onions</span>', 'rice', 'black beans'];
+    let list = document.createElement('ul');
+
+    // Solution 1 with appendChild() method
+    // string is to transform into a node is (required)
+    // assign string to an object (variable)
+
+    for (let i = 0, j = myArray.length; i < j; i++) {
+      let insideList = document.createElement('li');
+      let element = myArray[i]; // typeof element: string; typeof myArray[i]: string
+      insideList.textContent += element;
+      list.appendChild(insideList);
+    }
+
+    // Solution 2 with append() method
+
+    // for ( let i = 0, j = myArray.length; i < j; i++) {
+    //   let insideList = document.createElement('li');
+    //   insideList.textContent += myArray[i];
+    //   list.append(insideList);
+    // }
+
+    const section = document.querySelector('section');
+    section.appendChild(list);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Image Slide</title>
+    <style media="screen">
+      /* Legacy-type styling */
+      button {
+        margin-top: 30px;
+        float: left;
+        height: 50px;
+      }
+
+      img {
+        float: left;
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="next">Next</button>
+    <img id="slider" src="example.png" width="200px" height="100px">
+    <button id="prev">Prev</button>
+
+    <script type="text/javascript">
+      var images = [
+      "example1.png",
+      "example2.png",
+      "example3.png",
+      ];
+
+      var slider = document.selectElementById("slider");
+      var next = document.selectElementById("next");
+      var prev = document.selectElementById("prev");
+      var num = 0; // initialise index (of 'images' array)
+
+      next.addEventListener('click', function next() {
+        num++;
+
+        if (num > images.length - 1) { // or is it: num => images.length
+          // HINT: JavaScript is a zero based language
+          num = 0;
+        }
+
+        slider.src[num];
+      });
+
+      prev.addEventListener('click', function prev() {
+        num--;
+
+        if (num < 0) {
+          num = images.length - 1;
+        }
+
+        slider.src[num];
+      });
+
+    </script>
+  </body>
+</html>
