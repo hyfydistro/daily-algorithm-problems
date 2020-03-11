@@ -19,12 +19,21 @@
     <section class="preview"></section>
 
     <script type="text/javascript">
-      let cat = {
+      let cat1 = {
         name: 'Bertie',
         breed: 'Cymric',
         color: 'white',
         greeting: function() {
-          console.log('Meow!');
+          console.log(`Hello, said ${this.name} the ${this.breed}`);
+        }
+      }
+
+      let cat2 = {
+        name: 'Sanders',
+        breed: 'Tabi',
+        color: 'grey',
+        greeting: function() {
+          console.log(`Hello, said ${this.name} the ${this.breed}`);
         }
       }
 
