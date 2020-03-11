@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>fav band</title>
+    <style media="screen">
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+    </style>
+  </head>
+  <body>
+    <section class="preview"></section>
+
+    <script type="text/javascript">
+    let bandinfo;
+
+    // add code here
+
+    const section = document.querySelector('section');
+    let para1 = document.createElement('p');
+    para1.textContent = bandinfo;
+    section.appendChild(para1);
+    </script>
+  </body>
+</html>
