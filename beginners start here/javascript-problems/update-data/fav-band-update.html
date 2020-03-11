@@ -22,6 +22,17 @@
     let bandinfo;
 
     // add code here
+    let band = {
+      name: 'Epik High',
+      nationality: 'Korean',
+      genre: 'alternative hip hop',
+      members: 3,
+      formed: 2003,
+      split: false,
+      albums: [['Swan Songs', 2005], ['Remapping the Human Soul', 2006]]
+    };
+
+    bandinfo = `${band.name} is a ${band.genre} ${band.nationality} band that began in ${band.formed}. They have released many albums, such as, ${band.albums[0][0]} released in ${band.albums[0][1]} and ${band.albums[1][0]} relseased in ${band.albums[1][1]}.`;
 
     const section = document.querySelector('section');
     let para1 = document.createElement('p');
