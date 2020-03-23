@@ -10,10 +10,19 @@ Shape.prototype.calcPerimeter = function() {
 
 function Square(sideLength) {
   Shape.call(this, 'Squarepants', 4, sideLength);
-
-// Write over 'Shape', or any argumentst given for 'name' and 'sides'
-// Therefore, you CANNOT edit either from the console; this is UNTOUCHABLE! TRY!
 }
+
+// Alternative: Private version - uneditable! WIP - I FORGOT HOW AGAIN - MIGHT AS WELL DELETE
+// function Square(square, sides, sideLength) {
+//   Shape.call(this, square, sides, sideLength);
+//
+//   // Write over 'Shape', or any argumentst given for 'name' and 'sides'
+//   // Therefore, you CANNOT edit either from the console; this is UNTOUCHABLE! TRY!
+//   this.name = 'Plankton';
+//   this.sides = 1;
+// }
+// end of  "Alternative"
+
 
 // Inherit 'Shape' methods.
 Square.prototype = Object.create(Shape.prototype);
