@@ -5,7 +5,7 @@ function Shape (name, sides, sideLength) {
 }
 
 Shape.prototype.calcPerimeter = function() {
-  return this.sideLength;
+  return `The perimeter of this ${this.name} is ${this.sides * this.sideLength}`;
 };
 
 let square = new Shape('Square', '4', '5');
