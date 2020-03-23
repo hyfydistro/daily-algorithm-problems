@@ -1,45 +1,46 @@
-function Shape(name, sides, sideLength) {
-  this.name = name;
-  this.sides = sides;
-  this.sideLength = sideLength;
-}
+// function Shape(name, sides, sideLength) {
+//   this.name = name;
+//   this.sides = sides;
+//   this.sideLength = sideLength;
+// }
+//
+// Shape.prototype.calcPerimeter = function() {
+//   return `The perimeter of this ${this.name} is ${this.sides * this.sideLength}`;
+// };
 
-Shape.prototype.calcPerimeter = function() {
-  return `The perimeter of this ${this.name} is ${this.sides * this.sideLength}`;
-};
+// function Square(name, sides, sideLength) {
+//   Shape.call(this, name, sides, sideLength);
+//
+// // Write over 'Shape', or any argumentst given for 'name' and 'sides'
+// // Therefore, you CANNOT edit either from the console; this is UNTOUCHABLE! TRY!
+//   this.name = 'Squarepants';
+//   this.sides = '4';
+// }
 
-function Square(name, sides, sideLength) {
-  Shape.call(this, name, sides, sideLength);
+// // Inherit 'Shape' methods.
+// Square.prototype = Object.create(Shape.prototype);
+//
+// // Re-define constructor to 'Square', not 'Shape' anymore.
+// Square.prototype.constructor = Square;
+//
+// Square.prototype.calcArea = function() {
+//   return `The perimeter of this ${this.name} is ${this.sides * this.sideLength}`;
+// }
 
-// Write over 'Shape', or any argumentst given for 'name' and 'sides'
-// Therefore, you CANNOT edit either from the console; this is UNTOUCHABLE! TRY!
-  this.name = 'Squarepants';
-  this.sides = '4';
-}
-
-// Inherit 'Shape' methods.
-Square.prototype = Object.create(Shape.prototype);
-
-// Re-define constructor to 'Square', not 'Shape' anymore.
-Square.prototype.constructor = Square;
-
-Square.prototype.calcArea = function() {
-  return `The perimeter of this ${this.name} is ${this.sides * this.sideLength}`;
-}
 
 // Via ES6 'Class'
 
-// class Shape {
-//   constructor(name, sides, sideLength) {
-//     this.name = name;
-//     this.sides = sides;
-//     this.sideLength = sideLength;
-//   }
-//
-//   calcPerimeter() {
-//     return `The perimeter of this ${this.name} is ${this.sides * this.sideLength}`;
-//   }
-// }
+class Shape {
+  constructor(name, sides, sideLength) {
+    this.name = name;
+    this.sides = sides;
+    this.sideLength = sideLength;
+  }
+
+  calcPerimeter() {
+    return `The perimeter of this ${this.name} is ${this.sides * this.sideLength}`;
+  }
+}
 
 
 // Instances
@@ -50,18 +51,14 @@ Square.prototype.calcArea = function() {
 
 // Square ES6 'Class'
 
-// class Square extends Shape {
-//   constructor(name, sides, sideLength) {
-//     super(name, sides, sideLength);
-//     this.name = 'Square';
-//     this.sides = '4';
-//     this.sideLength = sideLength;
-//   }
-//
-//   calcArea() {
-//     return `The area of ${this.name} is ${2 * this.sideLength}`;
-//   }
-// }
+class Square extends Shape {
+  constructor(sideLength) {
+    super('square', 4, sideLength);
+  }
 
-// it is only effective on the third line
-let square = new Square(null, null, 3);
+  calcArea() {
+    return `The area of ${this.name} is ${2 * this.sideLength}`;
+  }
+}
+
+let square = new Square(3);
