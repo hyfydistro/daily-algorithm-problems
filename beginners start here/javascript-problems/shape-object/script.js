@@ -4,4 +4,10 @@ function Shape (name, sides, sideLength) {
   this.sideLength = sideLength;
 }
 
-// Write code below
+Shape.prototype.calcPerimeter = function() {
+  return this.sideLength;
+};
+
+let square = new Shape('Square', '4', '5');
+
+let triangle = new Shape('Triangle', '3', '3');
