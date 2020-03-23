@@ -67,5 +67,5 @@ Square.prototype.calcArea = function() {
 //     return `The area of ${this.name} is ${2 * this.sideLength}`;
 //   }
 // }
-//
+
 let square = new Square(3);
