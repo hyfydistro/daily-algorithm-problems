@@ -11,6 +11,34 @@ function displayCatInfo(catString) {
 
   // Add your code here
 
+  const cats = JSON.parse(catString);
+
+  // Loop through cat mothers
+  for (let i = 0; i < cats.length; i++) {
+    // Loop through array
+    // assign mother's name plus a comman
+    // if last element, use 'and' and a full stop at the end
+    if (i === (cats.length - 1)) {
+      motherInfo += `and ${cats[i]}.`;
+    } else {
+      motherInfo += `${cats[i]}, `;
+    }
+  }
+
+// Find the total number of kittens
+// Find the total of male
+// Find the total of female
+  for (let j = 0; j < cats.length; i++ ) {
+    for (let k = 0; k < cats[i].kittens.length; i++ ) {
+      total++;
+      if (cats[i].kittens[k].gender === 'm') {
+        male++;
+      }
+    }
+  }
+
+// end
+
   para1.textContent = motherInfo;
   para2.textContent = kittenInfo;
 }
