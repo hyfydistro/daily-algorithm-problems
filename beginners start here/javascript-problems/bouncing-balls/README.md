@@ -57,6 +57,34 @@ Call the function once to get the animation started :
 
         loop();
 
+**Adding Collision Detection**
+
+        Ball.prototype.collisionDetect = function() {
+          for (let j = 0l j < balls.length; j++) {
+            if (!(this === balls[j])) {
+              const dx = this.x - balls[j].x;
+              const dy = this.y - balls[j].y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < this.size + balls[j].size) {
+                balls[j].color = this.color = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')';
+              }
+            }
+          }
+        }
+
+An explanation follows:
+
+- For each ball, we need to check every other ball to see if it has collided with the current ball. To do this, we start another `for` to loop through all the balls in the `balls[]` array.
+
+- Inside the loop, we use an `if` statement to check whether the current ball being looped through is the same ball as the one we are currently checking. We don't want to check whether a ball has collided with itself! To do this, we check whether the current ball (i.e. the ball whose `collisionDetect` method is being invoked) is the same as the loop ball (i.e. the ball that is being referred to by the current iteration of the for loop in the `collisionDetect` method). We use `!` to negate the check, so that the code inside the `if` statement only runs if they are NOT the same.
+
+- Use a common algorithm to check the collision of two circles. Basically, checking whether any of the two circle's areas overlap.
+
+- If colission is detected, the code inside the inner `if` statement is run. In this case it is to set the color property of both circles to a new random color.
+
+It is possible to do something far more complex, like get the balls to bounce off each other realistically. For such physics simulations, developers tend to use a games or physics library such as *PhysicsJS*, *matter.js*, *Phaser*, etc.
+
 ## Keynotes
 
 * To equal the width and height of the browser viewport, the area that the webpage appears on, can be obtained from `Window.innerWidth` and `Window.innerHeight` properties.
