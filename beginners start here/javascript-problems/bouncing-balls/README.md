@@ -16,6 +16,20 @@ Draw the canvas, Model a ball, ...
 
 ## Keynotes
 
+* To equal the width and height of the browser viewport, the area that the webpage appears on, can be obtained from `Window.innerWidth` and `Window.innerHeight` properties.
+
 * `ctx` is the object that directly represents the drawing area of the canvas and allows us to draw 2D shapes on it.
 
-* To equal the width and height of the browser viewport, the area that the webpage appears on, can be obtained from `Window.innerWidth` and `Window.innerHeight` properties.
+* Use `beginPath()` to state that we want to draw a shape on the paper.
+
+* Use `fillStyle` to define what color the shape to be - this is set in our ball's `color`.
+
+* Use `arc()` method to trace an arc shape on the paper. It's parameters are:
+
+  - The `x` and `y` position of the arc's center.
+
+  - The radius of the arc; the ball's `size` property.
+
+  - The last two parameters specify the number of degrees around the circle that the arc is drawn between. Here we specify `0` degrees, and `2 * PI`, which is the equivalent of 360 degrees in radians (specify in radians only). If you had specified only `1 * PI` this results in a semi-circle (180 degrees).
+
+* `fill()` method, basically states "finish drawing the path we started with `beginPath()`, and fill the area it takes up with the color we specified earlier in `fillStyle`."
