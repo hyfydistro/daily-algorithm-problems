@@ -111,3 +111,7 @@ It is possible to do something far more complex, like get the balls to bounce of
         let num2 = -num; // 1
 
 * All programs that animate things generally involve an animation loop, which serves to update the information in the program and then render the resulting view on each frame of the animation. This is the basis for most games and other such programs.
+
+## Credits
+
+- _MDN_ - Object Building Practice
