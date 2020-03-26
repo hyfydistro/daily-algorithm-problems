@@ -37,6 +37,10 @@ The last two lines add the `velX` value to the `x` coordinate, and the `velY` va
 
 **Animating**
 
+Managing Storage for constructor `Ball`'s instances.
+
+The `while` loop creates a new instance of our `Ball()` using random values generated with out random() function, then using `push()` to store onto the end of our `balls` array. It is under the constraint that the number of balls should be no more than 25. i.e. When we have 25 balls on screen, no more balls will appear. This is editable; you can try varying the number in `balls.lenght < 25` to get more or fewer balls on screen. Depending on how much processing power your computer / browser has.
+
 ## Keynotes
 
 * To equal the width and height of the browser viewport, the area that the webpage appears on, can be obtained from `Window.innerWidth` and `Window.innerHeight` properties.
