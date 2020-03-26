@@ -30,6 +30,7 @@ Ball.prototype.draw = function() {
 // test
 let testBall = new Ball(50, 100, 4, 4, 'blue', 10);
 
+// Update ball's data and movement
 Ball.prototype.update = function() {
   if ((this.x + this.size) >= width) {
     this.velX = -(this.velX);
@@ -39,7 +40,7 @@ Ball.prototype.update = function() {
     this.velX = -(this.velX);
   }
 
-  if (this.y + this.size) >= height) {
+  if ((this.y + this.size) >= height) {
     this.velY = -(this.velY);
   }
 
@@ -49,4 +50,23 @@ Ball.prototype.update = function() {
 
   this.x += this.velX;
   this.y += this.velY;
+}
+
+// Animating the ball
+let balls = []
+
+while (balls.length < 25){
+  let size = random(10, 20);
+  let ball = new Ball(
+    // ball position always drawn at least one ball width
+    // away from the edge of the canvas to avoid drawing errors
+    random(0 + size, width - size), // position x
+    random(0 + size, height - size), // position y
+    random(-7, 7), // velX
+    random(-7, 7), // velY
+    'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')', // color of ball randomly generated
+    size
+  );
+
+  balls.push(ball);
 }

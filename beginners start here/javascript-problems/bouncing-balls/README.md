@@ -6,13 +6,15 @@
 
 Draw the canvas, Model a ball, ...
 
-**properties**
+**Properties**
 
 * Modelling the Ball - the horizontal `x` and vertical `y` coordinates where the ball starts on the screen , can range between 0 (top left hand corner) to the width and height of the browser viewport (bottom right hand corner).
 
 * horizontal `velX` and vertical `velY` velocity. In real terms these values are regularly added to the  `x` and `y` coordinate values when we animate the balls - to move them by this much on each frame.
 
 * Each ball gets a `size`, its radius in pixels.
+
+**Methods**
 
 * After drawing the ball in position, we need to move the ball. An `update()` function is needed. Write an `update()` method to the `Ball()`'s `prototype`.
 
@@ -31,6 +33,9 @@ In the four cases, we are checking to see:
   - If the `y` coordinate is smaller than `0`; the ball is going off the top edge.
 
 The last two lines add the `velX` value to the `x` coordinate, and the `velY` value to the `y` coordinate - the ball is in effect, it is moved each time this method is called.
+
+
+**Animating**
 
 ## Keynotes
 
