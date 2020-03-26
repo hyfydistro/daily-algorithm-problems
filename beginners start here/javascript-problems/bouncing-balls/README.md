@@ -41,6 +41,22 @@ Managing Storage for constructor `Ball`'s instances.
 
 The `while` loop creates a new instance of our `Ball()` using random values generated with out random() function, then using `push()` to store onto the end of our `balls` array. It is under the constraint that the number of balls should be no more than 25. i.e. When we have 25 balls on screen, no more balls will appear. This is editable; you can try varying the number in `balls.lenght < 25` to get more or fewer balls on screen. Depending on how much processing power your computer / browser has.
 
+* `loop()` function
+
+  - Sets the canvas fill to semi-transparent black, draws a rectangle of the color across the whole width and height of the canvas, using `fillRect()` (the four parameters provide a start coordinate, and a width and height for the rectangle drawn).
+
+  This serves to cover up the previous frame's drawing before the next one next one is drawn. If you don't do this, you'll just see snakes worming their way around the canvas instead of balls moving!
+
+  The color of the fill is set to semi-transparent, `rgb(0, 0, 0, 0.25)`, to allow the previous few frames to shine through slightly, producing the little trails behind the balls as they move. If you changed 0.25 to 1, you won't see them mat all any more.
+
+  - loops through all the balls n the `balls` array, and runs each ball's `draw()` and `update()` function to draw each one on the screen, then do the necessary updates to posiotn and velocity in time for the next frame.
+
+  - Runs the function again using the `requestAnimationFrame()` method. When this method is repeatedly run and passed the same function name, it runs that function a set number of times per second to create a smooth animation. This is done recursively, which means that the function is calling itself every time it runs, so it runs over and over again.
+
+Call the function once to get the animation started :
+
+        loop();
+
 ## Keynotes
 
 * To equal the width and height of the browser viewport, the area that the webpage appears on, can be obtained from `Window.innerWidth` and `Window.innerHeight` properties.
@@ -65,3 +81,5 @@ The `while` loop creates a new instance of our `Ball()` using random values gene
 
         let num1 = -1; // -1
         let num2 = -num; // 1
+
+* All programs that animate things generally involve an animation loop, which serves to update the information in the program and then render the resulting view on each frame of the animation. This is the basis for most games and other such programs.
