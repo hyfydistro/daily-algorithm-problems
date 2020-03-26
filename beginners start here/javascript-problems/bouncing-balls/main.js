@@ -52,6 +52,22 @@ Ball.prototype.update = function() {
   this.y += this.velY;
 }
 
+//Collision detection
+Ball.prototype.collisionDetect = function() {
+  for (let j = 0; j < balls.length; j++) {
+    if (!(this === balls[j])) {
+      // An algorithm to check the collision of two circles
+      const dx = this.x - balls[j].x;
+      const dy = this.y - balls[j].y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < this.size + balls[j].size) {
+        balls[j].color = this.color = 'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')';
+      }
+    }
+  }
+}
+
 // Animating the ball
 let balls = []
 
@@ -78,6 +94,7 @@ function loop() {
   for (let i = 0; i < balls.length; i++) {
     balls[i].draw();
     balls[i].update();
+    balls[i].collisionDetect();
   }
 
   requestAnimationFrame(loop);
