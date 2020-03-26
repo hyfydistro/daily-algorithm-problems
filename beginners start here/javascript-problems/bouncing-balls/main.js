@@ -55,7 +55,7 @@ Ball.prototype.update = function() {
 // Animating the ball
 let balls = []
 
-while (balls.length < 25){
+while (balls.length < 25) {
   let size = random(10, 20);
   let ball = new Ball(
     // ball position always drawn at least one ball width
@@ -82,3 +82,5 @@ function loop() {
 
   requestAnimationFrame(loop);
 }
+
+loop();
