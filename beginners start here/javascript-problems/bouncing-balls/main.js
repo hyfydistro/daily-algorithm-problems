@@ -32,8 +32,8 @@ function Ball(x, y, velX, velY, color, size) {
   this.size = size;
 }
 
-Balls.prototype = Object.create(Shape.prototype);
-Balls.prototype.constructor = Balls;
+Ball.prototype = Object.create(Shape.prototype);
+Ball.prototype.constructor = Ball;
 
 Ball.prototype.draw = function() {
   ctx.beginPath();
