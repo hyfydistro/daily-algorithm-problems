@@ -47,9 +47,6 @@ Ball.prototype.draw = function() {
   ctx.fill();
 };
 
-// test
-let testBall = new Ball(50, 100, 4, 4, 'blue', 10);
-
 // Update ball's data and movement
 Ball.prototype.update = function() {
   if ((this.x + this.size) >= width) {
@@ -88,40 +85,6 @@ Ball.prototype.collisionDetect = function() {
   }
 };
 
-// Animating the ball
-let balls = []
-
-while (balls.length < 25) {
-  let size = random(10, 20);
-  let ball = new Ball(
-    // ball position always drawn at least one ball width
-    // away from the edge of the canvas to avoid drawing errors
-    random(0 + size, width - size), // position x
-    random(0 + size, height - size), // position y
-    random(-7, 7), // velX
-    random(-7, 7), // velY
-    'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')', // color of ball randomly generated
-    size
-  );
-
-  balls.push(ball);
-  count++;
-  para.textContent = 'Ball count: ' + count;
-}
-
-function loop() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
-  ctx.fillRect(0, 0, width, height);
-
-  for (let i = 0; i < balls.length; i++) {
-    balls[i].draw();
-    balls[i].update();
-    balls[i].collisionDetect();
-  }
-
-  requestAnimationFrame(loop);
-}
-
 // 'EvilCircle' constructor
 function EvilCircle(x, y, velX, velY, exists) {
   Shape.call(this, x, y, velX, velY, exists);
@@ -140,10 +103,6 @@ EvilCircle.prototype.draw = function() {
   ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
   ctx.stroke()
 };
-
-// test
-let ball2 = new EvilCircle(50, 50, 5, 5, true);
-ball2.draw();
 
 // 'EvilCircle' constructor 'CheckBounds' method (similar to 'Shape' prototype 'update')
 EvilCircle.prototype.checkBounds = function() {
@@ -181,10 +140,10 @@ window.onkeydown = function(e) {
 };
 
 // 'EvilCircle' constructor 'collisionDetect' method (similar to 'Shape' prototype 'collisionDetect')
-Ball.prototype.collisionDetect = function() {
+EvilCircle.prototype.collisionDetect = function() {
   for (let j = 0; j < balls.length; j++) {
     // Check whether the current ball being checked exists
-    if (balls[j] === true) {
+    if (balls[j].exists) {
       // An algorithm to check the collision of two circles
       const dx = this.x - balls[j].x;
       const dy = this.y - balls[j].y;
@@ -200,7 +159,50 @@ Ball.prototype.collisionDetect = function() {
   }
 }
 
+// Animating the ball
+let balls = []
+
+while (balls.length < 25) {
+  let size = random(10, 20);
+  let ball = new Ball(
+    // ball position always drawn at least one ball width
+    // away from the edge of the canvas to avoid drawing errors
+    random(0 + size, width - size), // position x
+    random(0 + size, height - size), // position y
+    random(-7, 7), // velX
+    random(-7, 7), // velY
+    true,
+    'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')', // color of ball randomly generated
+    size
+  );
+
+  balls.push(ball);
+  count++;
+  para.textContent = 'Ball count: ' + count;
+}
+
+function loop() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+  ctx.fillRect(0, 0, width, height);
+
+  for (let i = 0; i < balls.length; i++) {
+    if (balls[i].exists) {
+      balls[i].draw();
+      balls[i].update();
+      balls[i].collisionDetect();
+    }
+  }
+
+  evilBob.draw();
+  evilBob.checkBounds();
+  evilBob.collisionDetect();
+
+  requestAnimationFrame(loop);
+}
 
 // Initiate Game
 
-// loop();
+let evilBob = new EvilCircle(150, 150, 7, 7, true);
+evilBob.setControls();
+
+loop();
