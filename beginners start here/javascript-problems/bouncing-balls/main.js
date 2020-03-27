@@ -127,6 +127,18 @@ function EvilCircle(x, y, velX, velY, exists) {
 EvilCircle.prototype = Object.create(Shape.prototype);
 EvilCircle.prototype.constructor = EvilCircle;
 
+// 'EvilCircle' constructor 'draw' method
+EvilCircle.prototype.draw = function() {
+  ctx.beginPath();
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = this.color;
+  ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+  ctx.stroke()
+}
+
+// test
+let ball2 = new EvilCircle(50, 50, 5, 5, true);
+ball2.draw();
 
 // Initiate Game
 
