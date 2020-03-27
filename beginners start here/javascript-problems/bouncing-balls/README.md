@@ -115,3 +115,5 @@ It is possible to do something far more complex, like get the balls to bounce of
 ## Credits
 
 - _MDN_ - Object Building Practice
+
+- _MDN_ - Adding features to our bouncing balls demo
