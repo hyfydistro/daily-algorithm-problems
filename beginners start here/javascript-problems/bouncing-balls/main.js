@@ -1,3 +1,6 @@
+const para = document.querySelector('p');
+let count = 0;
+
 const canvas = document.querySelector('canvas');
 
 const ctx = canvas.getContext('2d');
@@ -42,7 +45,7 @@ Ball.prototype.draw = function() {
   ctx.fillStyle = this.color;
   ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
   ctx.fill();
-}
+};
 
 // test
 let testBall = new Ball(50, 100, 4, 4, 'blue', 10);
@@ -67,7 +70,7 @@ Ball.prototype.update = function() {
 
   this.x += this.velX;
   this.y += this.velY;
-}
+};
 
 //Collision detection
 Ball.prototype.collisionDetect = function() {
@@ -83,7 +86,7 @@ Ball.prototype.collisionDetect = function() {
       }
     }
   }
-}
+};
 
 // Animating the ball
 let balls = []
@@ -102,6 +105,8 @@ while (balls.length < 25) {
   );
 
   balls.push(ball);
+  count++;
+  para.textContent = 'Ball count: ' + count;
 }
 
 function loop() {
@@ -134,7 +139,7 @@ EvilCircle.prototype.draw = function() {
   ctx.strokeStyle = this.color;
   ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
   ctx.stroke()
-}
+};
 
 // test
 let ball2 = new EvilCircle(50, 50, 5, 5, true);
@@ -157,7 +162,7 @@ EvilCircle.prototype.checkBounds = function() {
   if ((this.y - this.size) <= 0) {
     this.y = -(this.size);
   }
-}
+};
 
 // 'EvilCircle' constructor 'draw' method
 EvilCircle.prototype.setControls = function() {
@@ -173,7 +178,28 @@ window.onkeydown = function(e) {
       _this.y += _this.velY;
     }
   }
+};
+
+// 'EvilCircle' constructor 'collisionDetect' method (similar to 'Shape' prototype 'collisionDetect')
+Ball.prototype.collisionDetect = function() {
+  for (let j = 0; j < balls.length; j++) {
+    // Check whether the current ball being checked exists
+    if (balls[j] === true) {
+      // An algorithm to check the collision of two circles
+      const dx = this.x - balls[j].x;
+      const dy = this.y - balls[j].y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < this.size + balls[j].size) {
+        balls[j].exists = false;
+        count--;
+        para.textContent = 'Ball Count: ' + count;
+        // delete balls[j];
+      }
+    }
+  }
 }
+
 
 // Initiate Game
 
