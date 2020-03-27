@@ -140,6 +140,25 @@ EvilCircle.prototype.draw = function() {
 let ball2 = new EvilCircle(50, 50, 5, 5, true);
 ball2.draw();
 
+// 'EvilCircle' constructor 'CheckBounds' method (similar to 'Shape' prototype 'update')
+EvilCircle.prototype.checkBounds = function() {
+  if ((this.x + this.size) >= width) {
+    this.x = -(this.size);
+  }
+
+  if ((this.x - this.size) <= 0) {
+    this.x = -(this.size);
+  }
+
+  if ((this.y + this.size) >= height) {
+    this.y = -(this.size);
+  }
+
+  if ((this.y - this.size) <= 0) {
+    this.y = -(this.size);
+  }
+}
+
 // Initiate Game
 
 // loop();
