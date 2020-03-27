@@ -86,8 +86,8 @@ Ball.prototype.collisionDetect = function() {
 };
 
 // 'EvilCircle' constructor
-function EvilCircle(x, y, velX, velY, exists) {
-  Shape.call(this, x, y, velX, velY, exists);
+function EvilCircle(x, y, exists) {
+  Shape.call(this, x, y, 20, 20, exists);
   this.color = 'white';
   this.size = 10;
 }
@@ -202,7 +202,7 @@ function loop() {
 
 // Initiate Game
 
-let evilBob = new EvilCircle(150, 150, 7, 7, true);
+let evilBob = new EvilCircle(150, 150, true);
 evilBob.setControls();
 
 loop();
