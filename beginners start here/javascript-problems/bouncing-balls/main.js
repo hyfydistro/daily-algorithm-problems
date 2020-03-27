@@ -11,6 +11,7 @@ function random(min, max) {
   return num;
 }
 
+// 'Shape' constructor
 function Shape(x, y ,velX, velY, exists) {
   this.x = x;
   this.y = y;
@@ -26,6 +27,7 @@ function Shape(x, y ,velX, velY, exists) {
   // }
 }
 
+// 'Ball' constructor inherit from 'Shape' constructor
 function Ball(x, y, velX, velY, exists, color, size) {
   Shape.call(this, x, y, velX, velY, exists);
   this.color = color;
@@ -115,4 +117,17 @@ function loop() {
   requestAnimationFrame(loop);
 }
 
-loop();
+// 'EvilCircle' constructor
+function EvilCircle(x, y, velX, velY, exists) {
+  Shape.call(this, x, y, velX, velY, exists);
+  this.color = 'white';
+  this.size = 10;
+}
+
+EvilCircle.prototype = Object.create(Shape.prototype);
+EvilCircle.prototype.constructor = EvilCircle;
+
+
+// Initiate Game
+
+// loop();
