@@ -26,8 +26,8 @@ function Shape(x, y ,velX, velY, exists) {
   // }
 }
 
-function Ball(x, y, velX, velY, color, size) {
-  Shape.call(this, x, y, velX, velY);
+function Ball(x, y, velX, velY, exists, color, size) {
+  Shape.call(this, x, y, velX, velY, exists);
   this.color = color;
   this.size = size;
 }
