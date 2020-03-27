@@ -112,6 +112,10 @@ It is possible to do something far more complex, like get the balls to bounce of
 
 * All programs that animate things generally involve an animation loop, which serves to update the information in the program and then render the resulting view on each frame of the animation. This is the basis for most games and other such programs.
 
+* Use of `_this`
+
+`_this` is just a variable that is set to point to outer `this`. Everytime you call a function it has its own `this` (depending on how you called the function). So if you define callback inside another function, and you need to refer to `this` of that outer ("another") function, you can save it temporarily to a variable. This temporary variables are usually referred to as `_this`, `that`, or `self`.
+
 ## Credits
 
 - _MDN_ - Object Building Practice
