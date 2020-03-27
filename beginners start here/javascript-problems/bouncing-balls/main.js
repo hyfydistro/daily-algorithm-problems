@@ -11,14 +11,29 @@ function random(min, max) {
   return num;
 }
 
-function Ball(x, y ,velX, velY, color, size) {
+function Shape(x, y ,velX, velY, exists) {
   this.x = x;
   this.y = y;
   this.velX = velX;
   this.velY= velY;
+  this.exists = exists; // boolean value ONLY
+  // this.exists = function() {
+  //   if ( typeof exists === 'boolean') {
+  //     return exists;
+  //   } else {
+  //     throw "exists is not a boolean value";
+  //   }
+  // }
+}
+
+function Ball(x, y, velX, velY, color, size) {
+  Shape.call(this, x, y, velX, velY);
   this.color = color;
   this.size = size;
 }
+
+Balls.prototype = Object.create(Shape.prototype);
+Balls.prototype.constructor = Balls;
 
 Ball.prototype.draw = function() {
   ctx.beginPath();
