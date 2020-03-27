@@ -121,3 +121,5 @@ It is possible to do something far more complex, like get the balls to bounce of
 - _MDN_ - Object Building Practice
 
 - _MDN_ - Adding features to our bouncing balls demo
+
+- _StackOverflow_ - [Understanding this different types of function calls...](https://stackoverflow.com/questions/40298991/Understanding-javascripts-this-different-types-of-function-calls-and-how-to-c)
