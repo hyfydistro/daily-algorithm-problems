@@ -21,13 +21,6 @@ function Shape(x, y ,velX, velY, exists) {
   this.velX = velX;
   this.velY= velY;
   this.exists = exists; // boolean value ONLY
-  // this.exists = function() {
-  //   if ( typeof exists === 'boolean') {
-  //     return exists;
-  //   } else {
-  //     throw "exists is not a boolean value";
-  //   }
-  // }
 }
 
 // 'Ball' constructor inherit from 'Shape' constructor
