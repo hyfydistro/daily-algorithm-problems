@@ -24,11 +24,17 @@ const createClock = setInterval(displayTime, 1000);
 let startBtn = document.querySelector('#start');
 let pauseBtn = document.querySelector('#pause');
 let resetBtn = document.querySelector('#reset');
-let stopwatch = document.querySelector('#stopwatchDisplay');
+let output = document.querySelector('.output');
 
 let startTime,
-endTime;
-// Conversion
+endTime,
+givenSeconds,
+hours,
+minutes,
+seconds,
+timeString;
+
+
 
 // Start button
 startBtn.addEventListener('click', function start() {
@@ -45,8 +51,25 @@ startBtn.addEventListener('click', function start() {
 // Pause button
 pauseBtn.addEventListener('click', function pause() {
   endTime = Date.now();
-  let result = startTime - endTime;
+  let result =  endTime- startTime;
   console.log(result);
+
+  givenSeconds = result;
+
+  // Conversion
+  // 1 hr = 3600 seconds
+  // Find the amount hours, rouded to the nearest whole number
+  hours = Math.floor(givenSeconds / 3600);
+  // 1 hr = 60 minutes
+  // FInd the remainder minutes
+  minutes = Math.floor((givenSeconds - (hours * 3600)) / 60);
+  // Find the remainder seconds
+  seconds = givenSeconds - (hours * 3600) - (minutes * 60);
+
+  timeString = hours.toString().padStart(2, '0') + ':' +
+                   minutes.toString().padStart(2, '0') + ':' +
+                   seconds.toString().padStart(2, '0');
+  output.textContent = timeString;
   // make startBtn available again
   startBtn.disabled = false;
   // style
@@ -54,4 +77,9 @@ pauseBtn.addEventListener('click', function pause() {
   startBtn.classList.remove('is-disabled');
 
 
+})
+
+// Reset button
+resetBtn.addEventListener('click', function reset() {
+  
 })
