@@ -1,18 +1,3 @@
-// TODO:
-// 1. Create Start button
-// -
-// - display as hours, minutes and seconds
-//    - IF less than 0, as a decimal point, use a leading zero
-//    e.g. 0.90 s; 0.25 s
-
-// 2. Create Stop button
-// - To pause, you ought to clear the interval, display time, and set counter to 0
-
-// 3. Create Reset button
-// -You ought to disable the start button after pressing it once,
-//  and enable it again after you've stopped/ reset it.
-
-
 // Define a counter vairable for the number fof seconds and set it to zero.
 let secondCount = 0;
 
@@ -27,7 +12,7 @@ function displayCount() {
   // calculate current hours, minutes, and seconds
   let hours = Math.floor(secondCount/3600);
   let minutes = Math.floor((secondCount % 3600)/ 60);
-  let seconds = Math.floor(second % 60);
+  let seconds = Math.floor(secondCount % 60);
 
   // display a leading zero if the values ar eless than ten
 
@@ -49,7 +34,7 @@ const resetBtn = document.querySelector('#reset');
 
 // When the start button is pressed, start running displayCount() once per second using setInterval()
 startBtn.addEventListener('click', () => {
-  stopWatch = setInterval(display, 1000);
+  stopWatch = setInterval(displayCount, 1000);
   startBtn.disabled = true;
 
   // style for disabled button
@@ -71,7 +56,14 @@ pauseBtn.addEventListener('click', () => {
 resetBtn.addEventListener('click', () => {
   clearInterval(stopWatch);
   startBtn.disabled = false;
+
+  // reset count
   secondCount = 0;
+
+  // Remove style for disabled button
+  startBtn.classList.add('is-active');
+  startBtn.classList.remove('is-disabled');
+
   displayCount();
 });
 
