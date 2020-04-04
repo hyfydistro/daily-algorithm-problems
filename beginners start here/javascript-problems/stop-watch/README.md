@@ -58,7 +58,40 @@ It is used mostly for convenience or when performance matters, like in games in 
 
 **Method 1: Passing the seconds to date object** and **Method 2: Calculating the hours, minute and seconds individually**. Since we are using `Date.now()` **Method 2** is more suitable, because **Method 1** requires the `new Date` object.
 
-The hours can be calculated...
+The hours can be calculated by dividing the seconds by `3600` since one hour equals `3600` seconds. This will find out the number of hours. This number is brought down to the nearest integer by using the `Math.floor()` function.
+
+The minutes can be calculated by finding the number of seconds left after subtracting the number of hours. This value is divided by 60 to get the number of minutes. This number is brought down to the nearest integer by using the `Math.floor()`.
+
+The seconds can be calculated by subtracting the number of seconds in the minutes value and the number of seconds in the hours value from the total seconds given before.
+
+The final formatted date is create by converting each of these values to a string using the `toString()` method and then padding tehm with an extra `0`, if the value is a single-digit by using the `padStart()` method. The individual parts are then joined together with a colon(`:`) as the separator. This string is in the required format "**hh**:**mm**:**ss**"
+
+* `padStart()` method
+
+`String.prototype.padStart()`
+
+This method pads the current string with another string (multiple times, if needed) until the resulting string reaches the given length. The padding is applied from the start of the current string.
+
+**Syntax**
+
+        str.padStart(_targetLength_ [, _padString_])
+
+Parameters:
+
+  _targetLength_: The length og the resulting string once the current string has been padded. If the value is less than the current string's length, the current string is returned as si.
+
+  _padString_: [optional] The string to pad the current string with. If this padding string is too long to stay within the `targetLength`, it will be truncated from the end. The default value is "` `" (U+0020 'SPACE').
+
+Return Value: A `String` of the specified length with the pad string applied from the start.
+
+e.g.
+        'abc'.padString(10); // "       abc"
+        'abc'.padString(10, "foo"); // "foofooabc"
+        'abc'.padString(6, "123456"); // "123abc"
+        'abc'.padString(8, "0"); // "00000abc"
+        'abc'.padString(1); // "abc"
+
+Browser Compatibility: Not available in IE.
 
 ## Credits
 
