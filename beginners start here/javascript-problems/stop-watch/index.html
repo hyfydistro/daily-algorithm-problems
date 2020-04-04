@@ -4,13 +4,32 @@
     <meta charset="utf-8">
     <title>Simple setInterval clock</title>
     <style media="screen">
+    /* Defaults */
       p {
         font-family: sans-serif;
+      }
+
+      button {
+        border: none;
+      }
+
+      .is-active {
+        color: #000;
+        opacity: 100%;
+      }
+
+      /* States */
+      .is-disabled {
+        opacity: 60%;
       }
     </style>
     <script src="script.js" defer></script>
   </head>
   <body>
     <p class="clock"></p>
+    <button class="is-active" id="start">Start</button>
+    <button class="is-active" id="pause">Pause</button>
+    <button class="is-active" id="reset">Reset</button>
+    <p id="stopwatchDisplay"></p>
   </body>
 </html>
