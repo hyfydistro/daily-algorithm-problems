@@ -54,9 +54,16 @@ It is used mostly for convenience or when performance matters, like in games in 
 
         dateObj.toLocaleTimeString([Locales[, options]])
 
+* How to Convert seconds to time string format hh:mm:ss using JavaScript?
+
+**Method 1: Passing the seconds to date object** and **Method 2: Calculating the hours, minute and seconds individually**. Since we are using `Date.now()` **Method 2** is more suitable, because **Method 1** requires the `new Date` object.
+
+The hours can be calculated...
 
 ## Credits
 
 - _MDN_
 
 - _javascript.info_
+
+- _Geeksforgeeks_ - How to Ocnvert seconds to time string format hh:mm:ss using JavaScript?
