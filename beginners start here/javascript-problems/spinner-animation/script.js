@@ -28,3 +28,5 @@ spinner.style.transform = `rotate(${rotateCount}deg)`;
 // a rate as near 60 FPS as possible.
 rAF = requestAnimationFrame(draw);
 }
+
+draw();
