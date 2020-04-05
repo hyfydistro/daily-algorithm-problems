@@ -18,7 +18,7 @@ function draw(timestamp) {
 
   rotateCount = (timestamp - startTime) / 3;
 
-  if (rotate > 359) {
+  if (rotateCount > 359) {
     rotateCount %= 360;
   }
 
@@ -36,4 +36,40 @@ function reset() {
   btn.style.display = 'block';
   result.textContent = '';
   result.style.display = 'none';
+}
+
+// start button functionality
+btn.addEventListener('click', start);
+
+function start() {
+  draw();
+  spinnerContainer.style.display = 'block';
+  btn.style.display = 'none';
+  setTimeout(setEndgame, random(5000, 10000));
+  // Noticed `setTimeout` is not stored in a varaible.
+  // This is fine as long as don't need to clear your timeout at any point.
+}
+
+// Start: The spinner is shown and the players are made to wait a random
+// amount of time before they are asked to press their button.
+function setEndgame()  {
+  cancelAnimationFrame(rAF);
+  spinnerContainer.style.display = 'none';
+  result.style.display = 'block';
+  result.textContent = 'PLAYERS GO!!';
+
+  document.addEventListener('keydown', keyHandler);
+
+  function keyHandler(e) {
+    console.log(e.key);
+    if(e.key === 'a') {
+      result.textContent = 'Player 1 won!!';
+    } else if (e.key === 'l') {
+      result.textContent = 'Player 2 won!!';
+    }
+    // Note: ONLY lowercase keys are accepted
+
+    document.removeEventListener('keydown', keyHandler);
+    setTimeout(reset, 5000);
+  }
 }
