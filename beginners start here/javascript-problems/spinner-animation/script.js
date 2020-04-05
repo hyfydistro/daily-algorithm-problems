@@ -4,6 +4,7 @@ let startTime = null;
 let rAF;
 
 function draw(timestamp) {
+  console.log(timestamp);
 // Define the start time
 if (!startTime) {
   startTime = timestamp;
