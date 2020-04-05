@@ -23,6 +23,17 @@ function draw(timestamp) {
   }
 
   spinner.style.transform = `rotate(${rotateCount}deg)`;
-  
+
   rAF = requestAnimationFrame(draw);
+}
+
+// Initial state of the app
+result.style.display = 'none';
+spinnerContainer.style.display = 'none';
+
+// sets teh app back to the original state required to start the game again after it has been played.
+function reset() {
+  btn.style.display = 'block';
+  result.textContent = '';
+  result.style.display = 'none';
 }
