@@ -1,10 +1,14 @@
 const spinner = document.querySelector('div');
+
 let rotateCount = 0;
 let startTime = null;
 let rAF;
 
+// Boolean vairable to store state of spinner - true is spinning, false is not spinning
+let spinning = true;
+
 function draw(timestamp) {
-  console.log(timestamp);
+  // console.log(timestamp);
 // Define the start time
 if (!startTime) {
   startTime = timestamp;
@@ -29,5 +33,17 @@ spinner.style.transform = `rotate(${rotateCount}deg)`;
 // a rate as near 60 FPS as possible.
 rAF = requestAnimationFrame(draw);
 }
+
+// event listener to start and stop spinner when page is clicked
+document.body.addEventListener('click', function pausePlay() {
+  console.log("Hello!");
+  if (spinning) {
+    cancelAnimationFrame(rAF);
+    spinning = false;
+  } else {
+    draw();
+    spinning = true;
+  }
+});
 
 draw();
