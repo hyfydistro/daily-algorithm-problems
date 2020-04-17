@@ -12,6 +12,8 @@ function changeSize() {
   div.style.height = winHeight + 'px';
 }
 
-window.onresize = changeSize;
+// For older browsers
+// window.onresize = changeSize;
 
-// window.addEventListener('resize', changeSize);
+// For modern browsers
+window.addEventListener('resize', changeSize);
