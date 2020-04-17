@@ -29,10 +29,11 @@ function response() {
   list.appendChild(newListItem);
 
   newBtn.addEventListener('click', function() {
+    // modern browser support method:
     newListItem.remove();
+    // older browser support method:
     // list.removeChild(newListItem);
   });
-
 
 }
 
