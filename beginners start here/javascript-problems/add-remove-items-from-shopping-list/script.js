@@ -39,4 +39,7 @@ function response() {
 
 }
 
+// older browser support:
+// btn.onclick = response;
+// modern browser support:
 btn.addEventListener('click', response);
