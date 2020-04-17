@@ -35,6 +35,8 @@ function response() {
     // list.removeChild(newListItem);
   });
 
+  input.focus();
+
 }
 
 btn.addEventListener('click', response);
