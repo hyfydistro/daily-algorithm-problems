@@ -4,13 +4,15 @@ const input = document.querySelector('input');
 
 function response() {
   // Store input value
-  let value = input.value;
+  let value = input.value.toString();
   console.log(value);
 
 // Throw error if...
-  // if (value === '') {
-  //   // Write a warning and prevent from adding blank slots
-  // }
+  if (value === '') {
+    // Write a warning and prevent from adding blank slots
+    console.error("Please enter a value!");
+    throw "Please enter a value!";
+  }
 
   // Empty string
   input.value = '';
