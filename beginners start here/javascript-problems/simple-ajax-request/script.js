@@ -2,13 +2,13 @@ const verseChoose = document.querySelector('select');
 const poemDisplay = document.querySelector('pre');
 
 verseChoose.onchange = function() {
-  const verse = verse.value;
+  const verse = verseChoose.value;
   updateDisplay(verse);
 };
 
 function updateDisplay(verse) {
   // Make text equivalent to text file path name
-  verse = verseChoose.replace(" ", "");
+  verse = verse.replace(" ", "");
   verse = verse.toLowerCase();
   let url = verse + '.txt';
 
