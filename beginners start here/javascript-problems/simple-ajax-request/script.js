@@ -23,3 +23,7 @@ function updateDisplay(verse) {
   };
   request.send();
 }
+
+// If it doesn't show, use the following syntax; comment above.
+// updateDisplay('Verse 1');
+// verseChoose.value = 'Verse 1';
