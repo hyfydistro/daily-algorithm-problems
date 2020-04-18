@@ -8,7 +8,7 @@ verseChoose.onchange = function() {
 
 function updateDisplay(verse) {
   // Make text equivalent to text file path name
-  verse = verse.replace(" ", "");
+  verse = verseChoose.replace(" ", "");
   verse = verse.toLowerCase();
   let url = verse + '.txt';
 
