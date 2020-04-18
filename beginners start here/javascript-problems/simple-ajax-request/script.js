@@ -12,16 +12,27 @@ function updateDisplay(verse) {
   verse = verse.toLowerCase();
   let url = verse + '.txt';
 
-  // XHR request
-  let request = new XMLHttpRequest();
-  // specify request method
-  request.open('GET', url);
-  // Set response to expext; xhr return 'text' as default
-  request.responseType = 'text';
-  request.onload = function() {
-    poemDisplay.textContent = request.response;
-  };
-  request.send();
+  // Either option (1) or (2) will work. Comment one and uncomment the other.
+  // (1) Via XHR
+  // // XHR request
+  // let request = new XMLHttpRequest();
+  // // specify request method
+  // request.open('GET', url);
+  // // Set response to expext; xhr return 'text' as default
+  // request.responseType = 'text';
+  // request.onload = function() {
+  //   poemDisplay.textContent = request.response;
+  // };
+  // request.send();
+
+  // (2) Via Fetch
+  fetch(url)
+  .then(function(response) {
+    response.text()
+    .then(function(text) {
+      poemDisplay.textContent = text;
+    });
+  });
 }
 
 // If it doesn't show, use the following syntax; comment above.
