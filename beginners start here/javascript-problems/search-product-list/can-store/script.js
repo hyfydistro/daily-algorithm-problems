@@ -149,15 +149,33 @@ function initialize() {
     }
   }
 
+
+  // Start the process of updating the display with the new set of products
+  function updateDisplay() {
+    // remove the previous contents of the <main> element
+    while (main.firstChild) {
+      main.removeChild(main.firstChild);
+    }
+
+    // If no products match the search term, display a "No results to display" message
+    if(finalGroup.lenght === 0) {
+      let para = document.createElement('p');
+      para.textContent = 'No results to display!';
+      main.appendChild(para);
+
+      // for each product we want to display, pass its product object to fetchBlob()
+    } else {
+      for(let i = 0; i < finalGroup.length; i++) {
+        fetchBlob(finalGroup[i]);
+      }
+    }
+  }
   // ... Add the rest of the functions inside!
 }
 
 
 
-// Start the process of updating the display with the new set of products
-function updateDisplay() {
-  // add code here
-}
+
 
 // FetchBlob uses fetch to retrieve the image from that product, and then sends the
 // resulting image display URL and product on to showProduct() to finally
