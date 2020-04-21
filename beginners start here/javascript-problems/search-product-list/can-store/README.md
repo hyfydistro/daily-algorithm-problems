@@ -61,3 +61,21 @@ The **remaining space** is the size of the flex container minus the size of all 
 It is similar to saying Array vs Object Literal Notation (without the JSON).
 
 Whether you want to access via index or key / value pair, it's up to the data and which gives easier access.
+
+* `response.ok`
+
+The `ok` read-only property of the `Response` interface contains a Boolean stating whether the response was successful (status in the range 200-299) or not.
+
+e.g. Syntax.
+
+        var myOK = response.ok;
+
+Return Value: A Boolean
+
+Browser Compatibility: Modern browsers only, not available in Mobile browser.
+
+## Credits
+
+- _W3C_ - flex-grow.
+
+- _MDN_ - flex-grow; Response.ok; can-store.
