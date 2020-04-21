@@ -62,7 +62,7 @@ It is similar to saying Array vs Object Literal Notation (without the JSON).
 
 Whether you want to access via index or key / value pair, it's up to the data and which gives easier access.
 
-* `response.ok`
+* `response.ok`[JS]
 
 The `ok` read-only property of the `Response` interface contains a Boolean stating whether the response was successful (status in the range 200-299) or not.
 
@@ -73,6 +73,16 @@ e.g. Syntax.
 Return Value: A Boolean
 
 Browser Compatibility: Modern browsers only, not available in Mobile browser.
+
+* `<option>`, `<select>` [HTML]
+
+Each `<option>` element should have a `value` attribute containing the data value to submit to the server when that option is selected. If no `value` attribute is included, the value defaults to the text contained inside the element.
+
+You can include a `selected` attribute on an `<option>` element to make it selected by default when the page first loads.
+
+The `<select>` element is a form control and can be used in a form to collect user input.
+
+**Why use preventDefault when <select>-ing options**
 
 ## Credits
 
