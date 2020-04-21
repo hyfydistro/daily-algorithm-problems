@@ -84,6 +84,8 @@ The `<select>` element is a form control and can be used in a form to collect us
 
 **Why use preventDefault when <select>-ing options**
 
+`select` works the same way as inputs. It just gives you preset options to choose from. However, it does not work alone. It needs a button.???
+
 ## Credits
 
 - _W3C_ - flex-grow.
