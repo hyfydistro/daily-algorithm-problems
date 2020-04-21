@@ -45,6 +45,41 @@ xhr.send();
 // Sets up the app locgic, declares required variables, contains all the other functions.
 function initialize() {
   // grab the UI elements that we need to manipulate
+  let category = docuent.querySelector('#category');
+  let searchTerm = document.querySelector('#searchTerm');
+  let searchBtn = document.querySelector('button');
+  let main = document.querySelector('main');
+
+  // Keep a record of what the last category and search term entered were
+  let lastCategory = category.value;
+  // No search has been made yet
+  let lastSearch = '';
+
+  // These contain the results of filtering by category, and seach term
+  // finalGroup will contain the products that need to be displayed after
+  // the searching has been done. Each will be an array containing objects.
+  // Each object will represent a product.
+  let categoryGroup,
+  finalGroup;
+
+  // To start with, set finalGroup to equal the entire products database,
+  // then run updateDisplay(), so ALL products are displayed initially.
+  finalGroup = products;
+  updateDisplay();
+
+  // Set both to equal an empty array, intime for searches to be run.
+  category = [];
+  finalGroup = [];
+
+  // When the search button is clicked, invoke selectCategory() to start
+  // a search running to select the category of products we want to display
+  searchBtn.addEventListener('click', selectCategory);
+
+  function selectCategory(e) {
+    // Use preventDefault() to stop the form submitting - that would ruin the experience.
+    // Because when you finish selecting, usually it submits because it is a form element.
+    // When <option> is selected it will automatically submit (send) it to the server.
+  }
 
   // ... Add the rest of the functions inside!
 }
