@@ -82,9 +82,15 @@ You can include a `selected` attribute on an `<option>` element to make it selec
 
 The `<select>` element is a form control and can be used in a form to collect user input.
 
-**Why use preventDefault when <select>-ing options**
+NO, NOTHING HAPPENS WHEN YOU ON CHANGE OR SELECT OR CLICK TO THE SELECT INPUT. NO DATA IS SENT UNLESS YOU CREATE AN AJAX REQUEST AND ADD AN EVENT LISTENER TO IT.
 
-`select` works the same way as inputs. It just gives you preset options to choose from. However, it does not work alone. It needs a button.???
+`select` works the same way as inputs. It just gives you preset options to choose from.
+
+**Suggestion**
+
+A Developer suggest to attach the event listener to the `<button>` element instead of the select input. Use an `id` to the select input to collect its data instead to having the event listener do so.
+
+* `indexOf` is a method of JavaScript String that searches the string for matching text. `indexOf` will return `-1` if a match was not found, or the number of the index where the match starts; This method returns `-1` if the value to search for never occurs.
 
 ## Credits
 
