@@ -45,7 +45,7 @@ xhr.send();
 // Sets up the app locgic, declares required variables, contains all the other functions.
 function initialize() {
   // grab the UI elements that we need to manipulate
-  let category = docuent.querySelector('#category');
+  let category = document.querySelector('#category');
   let searchTerm = document.querySelector('#searchTerm');
   let searchBtn = document.querySelector('button');
   let main = document.querySelector('main');
@@ -68,7 +68,7 @@ function initialize() {
   updateDisplay();
 
   // Set both to equal an empty array, intime for searches to be run.
-  category = [];
+  categoryGroup = [];
   finalGroup = [];
 
   // When the search button is clicked, invoke selectCategory() to start
@@ -79,6 +79,47 @@ function initialize() {
     // Use preventDefault() to stop the form submitting - that would ruin the experience.
     // Because when you finish selecting, usually it submits because it is a form element.
     // When <option> is selected it will automatically submit (send) it to the server.
+    e.preventDefault();
+
+    // Clear out any previous search
+    categoryGroup = [];
+    finalGroup = [];
+
+    // if the category and search term are the same as they were last time a
+    // search was run, the results will be the same, so there is no point running
+    // it again - just return out of the function
+    if (category.value === lastCategory && searchTerm.value.trim() === lastSearch) {
+      return;
+    } else {
+      // Update the record of last category and search term
+      lastCategory = category.value;
+      lastSearch = searchTerm.value.trim();
+
+      // In this case we want to select all products, then filter them by the search term,
+      // so we just set 'categoryGroup' to the entire JSON object, then run 'selectProducts()'
+      if (category.value === 'ALL') {
+        categoryGroup = products;
+        selectProducts();
+
+        // If a specific category is chosen, we need to filter out the products not in that category,
+        // then put the remaining products inside categoryGroup, before running selectProducts()
+      } else {
+        // the values in the <option> elements are upperacse, whereas the categories
+        // store in the JSON (under "type") are lowercase. We therefore need to convert
+        // to lower case before we do a comparison
+        let lowerCase = category.value.toLowerCase();
+        for (let i = 0; i < products.length; i++) {
+          // If a product's type property is the same as the chose category, we want to
+          // display it, so we push it onto the categoryGroup array.
+          if (products[i].type === lowerCaseType) {
+            categoryGroup.push(products[i]);
+          }
+        }
+
+        // Run selectProducts() after the filtering has been done
+        selectProducts();
+      }
+    }
   }
 
   // ... Add the rest of the functions inside!
