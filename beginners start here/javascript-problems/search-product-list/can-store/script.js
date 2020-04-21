@@ -122,14 +122,37 @@ function initialize() {
     }
   }
 
+  // selectProducts() Takes the group of products selected by selectCategory(), and further
+  // filters them by the entered search term (if one has been entered)
+  function selectProducts() {
+    // If no search term has been entered, just make the finalGroup array equal to the categoryGroup
+    // array - we don't want to filter the products further - then run updateDisplay().
+    if (searchTerm.value.trim() === '') {
+      finalGroup = categoryGroup;
+      updateDisplay();
+    } else {
+      // Make sure the search term is converted to lower case before comparison.
+      // Keep the product names all lower case to keep things simple.
+      let lowerCaseSearchTerm = searchTerm.value.trim().toLowerCase();
+
+      // for each product in categoryGroup, see if the search term is contained inside the product name
+      // (if the indexOf() result doesn't return -1, it means it is) - it is, then push the product
+      // onto the finalGroup
+      for(let i = 0; i < categoryGroup.length; i++) {
+        if(categoryGroup[i].name.indexOf(lowerCaseSearchTerm) !== -1) {
+          finalGroup.push(categoryGroup[i]);
+        }
+      }
+
+      // run updateDisplay() after this second round of filtering has been done
+      updateDisplay();
+    }
+  }
+
   // ... Add the rest of the functions inside!
 }
 
-// selectProducts() Takes the group of products selected by selectCategory(), and further
-// filters them by the entered search term (if one has been entered)
-function selectProducts() {
-  // add code here
-}
+
 
 // Start the process of updating the display with the new set of products
 function updateDisplay() {
