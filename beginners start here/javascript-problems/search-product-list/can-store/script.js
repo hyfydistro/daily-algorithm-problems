@@ -5,7 +5,7 @@ let products;
 // once the products have been successfully loaded and formatted as a JSON object
 // using response.json(), run the initialize() function
 // Get JSON
-// Promise
+// Via Promise
 fetch('products.json').then(function(response) {
   if (response.ok) {
     return response.json();
@@ -21,26 +21,26 @@ fetch('products.json').then(function(response) {
 
 
 
-// xhr
-let url = 'products.json'
-let xhr = new XMLHttpRequest();
-xhr.open('GET', url);
-xhr.responseType = 'json';
-
-xhr.onload = function() {
-  if (xhr.status === 200) {
-    let products = xhr.response;
-    initialize(products);
-  } else {
-    console.log('Network request for products.json failed ' + xhr.status + ': ' + xhr.statusText);
-  }
-};
-
-xhr.onerror = function() {
-  console.error('Fetch problem: ' + err.message);
-};
-
-xhr.send();
+// Via XHR
+// let url = 'products.json'
+// let xhr = new XMLHttpRequest();
+// xhr.open('GET', url);
+// xhr.responseType = 'json';
+//
+// xhr.onload = function() {
+//   if (xhr.status === 200) {
+//     let products = xhr.response;
+//     initialize(products);
+//   } else {
+//     console.log('Network request for products.json failed ' + xhr.status + ': ' + xhr.statusText);
+//   }
+// };
+//
+// xhr.onerror = function() {
+//   console.error('Fetch problem: ' + err.message);
+// };
+//
+// xhr.send();
 
 // Sets up the app locgic, declares required variables, contains all the other functions.
 function initialize() {
@@ -170,23 +170,25 @@ function initialize() {
       }
     }
   }
+
+  // FetchBlob uses fetch to retrieve the image from that product, and then sends the
+  // resulting image display URL and product on to showProduct() to finally
+  // display it
+  function fetchBlob(product) {
+    // construct the URL path to the image file from the product.image property
+    let url = 'images/' + product.image;
+
+    // Use fetch to fetch the image, and convert the resulting response to a blob
+    // Again, if any errors occur we report them in the console.
+
+
+  }
   // ... Add the rest of the functions inside!
 }
 
 
-
-
-
-// FetchBlob uses fetch to retrieve the image from that product, and then sends the
-// resulting image display URL and product on to showProduct() to finally
-// display it
-
-function fetchBlob(product) {
-  // add code here
-}
-
 // Get Image from JSON
-//Promise
+// Via Promise
 fetch(url).then(function(response) {
   return response.blob();
 }).then(function(blob) {
@@ -194,7 +196,7 @@ fetch(url).then(function(response) {
   showProduct(objectURL, product);
 });
 
-// xhr
+// Via XHR
 let url = 'images/' + product.image;
 
 let xhr = new XMLHttpRequest();
